@@ -1,0 +1,38 @@
+<form class="modal" [formGroup]="form" (ngSubmit)="this.data.taskAction(form.value)">
+  <h1 mat-dialog-title class="modal-title">{{ data.title }}</h1>
+  <div mat-dialog-content class="modal-content">
+
+    <mat-form-field class="modal-input" appearance="fill">
+      <mat-label>Some task</mat-label>
+      <input matInput placeholder="Learn to swim..." formControlName="description"
+             maxlength="35">
+
+      <div class="errors" *ngIf="_description?.invalid && (_description?.touched || _description?.dirty)">
+        <span *ngIf="_description?.errors?.['required']">Field is required</span>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="modal-input">
+      <mat-label>Choose a date</mat-label>
+      <input matInput [matDatepicker]="datepicker" formControlName="date"
+             [matDatepickerFilter]="datepickerFilter" readonly>
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="datepicker"></mat-datepicker-toggle>
+      <mat-datepicker #datepicker>
+        <mat-datepicker-actions>
+          <button mat-button matDatepickerCancel>Cancel</button>
+          <button mat-raised-button color="accent" matDatepickerApply>Apply</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+
+      <div class="errors" *ngIf="_date?.invalid && (_date?.touched || _date?.dirty)">
+        <span *ngIf="_date?.errors?.['required']">Field is required</span>
+      </div>
+    </mat-form-field>
+
+  </div>
+  <div mat-dialog-actions class="modal-actions">
+    <button mat-raised-button color="accent" mat-dialog-close
+            type="submit" [disabled]="form.invalid">Create</button>
+  </div>
+</form>

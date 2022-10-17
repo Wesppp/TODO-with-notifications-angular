@@ -1,0 +1,20 @@
+.hint-modal {
+  .mat-dialog-title {
+    font-weight: 500;
+  }
+
+  .mat-dialog-content {
+    font-size: 1.1rem;
+
+    .task-status {
+      font-weight: 450;
+      color: #787cff;
+    }
+
+    .task-status-description {
+      font-weight: 400;
+      color: #8200ff;
+    }
+  }
+
+}

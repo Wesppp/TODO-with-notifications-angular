@@ -1,0 +1,12 @@
+<app-options-panel></app-options-panel>
+<div class="background"></div>
+
+<div class="container" cdkDropListGroup>
+  <app-resources-card [folders]="folders"></app-resources-card>
+
+  <app-status-card [statusCard]="todoCard"></app-status-card>
+
+  <app-status-card [statusCard]="doingCard"></app-status-card>
+
+  <app-status-card [statusCard]="doneCard"></app-status-card>
+</div>

@@ -1,0 +1,21 @@
+<mat-card class="task disable" [@bounceIn]="bounceIn">
+  <div class="task-content" [ngClass]="{'disable': task.status === 'done'}">
+    <span class="delete-btn" (click)="deleteTask(task)"></span>
+
+    <div class="task-icon icon">
+      <img src="./assets/icons/task-icon.png" alt=""
+           (click)="updateTaskModal($event)">
+    </div>
+
+    <p class="task-description">{{ task.description }}</p>
+    <small class="task-date">{{ task.date | date:'mediumDate'}}</small>
+  </div>
+
+  <ng-container>
+    <div class="rubbish-container" *ngIf="task.status === 'done'">
+      <img src="assets/icons/rubbish-icon.svg" alt="Rubbish"
+           class="icon rubbish-icon" (click)="deleteTask(task)">
+    </div>
+  </ng-container>
+
+</mat-card>

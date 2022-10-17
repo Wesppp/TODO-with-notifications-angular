@@ -1,0 +1,73 @@
+<form class="auth-modal" [formGroup]="authForm" *ngIf="authForm"
+      (ngSubmit)="isAuthDataLoading=true; data.authFunction(authForm.value, authForm)">
+  <h1 mat-dialog-title class="auth-modal_title">{{ data.title }}</h1>
+  <div mat-dialog-content class="auth-modal_content">
+
+    <mat-form-field class="form-field" appearance="fill" *ngIf="data.modalType === 'registration'">
+      <mat-label>Name</mat-label>
+      <input matInput #name formControlName="name" name="name" id="name"
+             placeholder="Enter your name..." maxlength="30">
+
+      <div class="errors" *ngIf="_name?.invalid && (_name?.touched || _name?.dirty)">
+        <span *ngIf="_name?.errors?.['required']">Field is required</span>
+        <span *ngIf="_name?.errors?.['maxlength']">Maxlength is 30</span>
+        <span *ngIf="_name?.errors?.['pattern']">Enter at least 4 letters</span>
+      </div>
+
+      <mat-hint align="end">{{name.value.length}} / 30</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" name="email" id="email"
+             placeholder="Enter your email...">
+
+      <div class="errors" *ngIf="_email?.invalid && (_email?.touched || _email?.dirty)">
+        <span *ngIf="_email?.errors?.['required']">Field is required</span>
+        <span *ngIf="_email?.errors?.['email']">Email isn't correct</span>
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password" name="password"
+             #password1 placeholder="Enter your password..." id="password" maxlength="16">
+
+      <div class="errors" *ngIf="_password?.invalid && (_password?.touched || _password?.dirty)">
+        <span *ngIf="_password?.errors?.['required']">Field is required</span>
+        <span *ngIf="_password?.errors?.['minlength']">The minimum length is 6</span>
+      </div>
+
+      <mat-hint align="end">{{password1.value.length}} / 16</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill" *ngIf="data.modalType === 'registration'">
+      <mat-label>Repeat password</mat-label>
+      <input type="password" matInput formControlName="repeatPassword" name="repeat-password"
+             #password2 placeholder="Enter your password another one..." id="repeat-password" maxlength="16">
+
+      <div class="errors" *ngIf="_repeatPassword?.invalid && (_repeatPassword?.touched || _repeatPassword?.dirty)">
+        <span *ngIf="_repeatPassword?.errors?.['required']">Field is required</span>
+        <span *ngIf="_repeatPassword?.errors?.['minlength']">The minimum length is 6</span>
+      </div>
+
+      <mat-hint align="end">{{password2.value.length}} / 16</mat-hint>
+    </mat-form-field>
+
+  </div>
+
+  <div mat-dialog-actions class="modal-actions">
+    <div class="modal-actions-btns">
+      <button mat-raised-button color="accent" [disabled]="authForm.invalid">
+        {{ data.title }}
+      </button>
+      <button mat-raised-button mat-dialog-close (click)="data.navigate()">
+        {{ data.modalType === 'login' ? 'Sign up' : 'Sign in' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="progress-bar" *ngIf="isAuthDataLoading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</form>

@@ -1,0 +1,10 @@
+<mat-card class="folder" (click)="openFolder(folder)" [@bounceIn]="bounceIn"
+          [ngClass]="{'active': activeFolder === folder}">
+  <span class="delete-btn" (click)="deleteFolder($event, folder)"></span>
+
+  <div class="folder-icon">
+    <img src="assets/icons/folder.png" alt="" (click)="updateFolderModal($event)">
+  </div>
+  <p class="folder-title">{{ folder.title }}</p>
+</mat-card>
+

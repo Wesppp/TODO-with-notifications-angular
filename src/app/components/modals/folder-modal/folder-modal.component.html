@@ -1,0 +1,19 @@
+<form class="modal" [formGroup]="form" (ngSubmit)="this.data.folderAction(form.value)">
+  <h1 mat-dialog-title class="modal-title">{{ data.title }}</h1>
+  <div mat-dialog-content class="modal-content">
+    <mat-form-field class="modal-input" appearance="fill">
+      <mat-label>Some folder</mat-label>
+      <input matInput placeholder="Housework..." formControlName="title"
+             maxlength="35">
+
+      <div class="errors" *ngIf="_title?.invalid && (_title?.touched || _title?.dirty)">
+        <span *ngIf="_title?.errors?.['required']">Field is required</span>
+      </div>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions class="modal-actions">
+    <button mat-raised-button color="accent" mat-dialog-close
+    type="submit" [disabled]="form.invalid">{{ data.action }}</button>
+  </div>
+</form>
+

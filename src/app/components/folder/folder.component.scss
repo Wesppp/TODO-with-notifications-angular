@@ -1,0 +1,42 @@
+.folder {
+  position: relative;
+  background: #fbd480;
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+  word-break: break-all;
+  cursor: pointer;
+  transition: .2s;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  .folder-title {
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin-left: 1rem;
+    width: 180px;
+  }
+
+  .folder-icon {
+    img {
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      transition: .2s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &:hover {
+    background: rgba(255, 170, 0, 0.65);
+  }
+
+  &.active {
+    background: rgba(255, 170, 0, 0.65);
+  }
+}

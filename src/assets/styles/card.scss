@@ -1,0 +1,29 @@
+.card {
+  width: 300px;
+  padding: 0;
+
+  .card-header {
+    background-color: #bababa;
+    padding: .5rem 1rem;
+    margin-top: 10px;
+
+    .icon {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .card-content {
+    padding: .5rem 1rem;
+  }
+
+  .card-actions {
+    padding: .5rem 1rem;
+  }
+
+  .empty-data {
+    font-size: 1.1rem;
+    text-align: center;
+    text-decoration: underline;
+  }
+}

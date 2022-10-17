@@ -1,0 +1,25 @@
+.modal {
+  width: 300px;
+
+  .modal-title {
+    text-align: center;
+    font-weight: 450;
+  }
+
+  .modal-actions {
+    display: flex;
+    justify-content: center;
+
+    button {
+      width: 100px;
+    }
+  }
+
+  .modal-content {
+
+    .modal-input {
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
+}

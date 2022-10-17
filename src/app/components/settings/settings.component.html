@@ -1,0 +1,10 @@
+<div class="settings-icon-container">
+  <img src="assets/icons/settings-icon.png" alt="Settings"
+       class="settings-icon" [matMenuTriggerFor]="settings">
+  <mat-menu #settings="matMenu">
+    <section [formGroup]="notifications">
+      <p><mat-checkbox formControlName="isNotifications" (change)="toggle($event)">Notifications</mat-checkbox></p>
+    </section>
+  </mat-menu>
+</div>
+

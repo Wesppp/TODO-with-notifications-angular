@@ -1,0 +1,13 @@
+mat-card.card {
+  width: 400px;
+
+  .card-content {
+    max-height: 500px;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+    .folders-list {
+      padding: 0;
+    }
+  }
+}

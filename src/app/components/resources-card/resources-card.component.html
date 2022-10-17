@@ -1,0 +1,24 @@
+<mat-card class="card">
+  <mat-card-header class="card-header">
+    <div mat-card-avatar>
+      <img class="icon" src="./assets/icons/folder-icon.png" alt="">
+    </div>
+    <mat-card-title>Resources</mat-card-title>
+    <mat-card-subtitle>your folders</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="card-content">
+
+      <ul class="folders-list">
+        <app-folder *ngFor="let folder of folders; trackBy: trackByFolders" [folder]="folder"
+                    (deleteFolderEvent)="deleteFolder($event)">
+        </app-folder>
+      </ul>
+
+    <p class="empty-data" *ngIf="!folders.length">You don't have folders</p>
+
+  </mat-card-content>
+  <hr>
+  <mat-card-actions class="card-actions" align="end">
+    <button mat-raised-button color="accent" (click)="openFolderModal()">Create folder</button>
+  </mat-card-actions>
+</mat-card>

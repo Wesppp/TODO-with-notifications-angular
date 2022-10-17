@@ -1,0 +1,50 @@
+.auth-modal {
+  width: 35vw;
+
+  .auth-modal_title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-align: center;
+    color: #925848cf;
+    letter-spacing: 0.1em;
+  }
+
+  .auth-modal_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .form-field {
+      font-size: 1.1rem;
+
+      mat-label {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .modal-actions {
+    font-size: 1.1rem;
+
+    .git-ref {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-left: .4rem;
+
+      .git-ref-icon {
+        width: 37px;
+        height: 37px;
+        transition: .3s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+
+  .progress-bar {
+    margin-top: 2rem;
+  }
+}

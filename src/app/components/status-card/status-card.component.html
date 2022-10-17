@@ -1,0 +1,30 @@
+<mat-card class="card">
+  <mat-card-header class="card-header">
+    <div mat-card-avatar>
+      <img class="icon" [src]="statusCard.icon" alt="">
+    </div>
+    <mat-card-title>{{ statusCard.title }}</mat-card-title>
+    <mat-card-subtitle>{{ statusCard.subtitle }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content class="card-content" cdkDropList [cdkDropListData]="tasks"
+                    (cdkDropListDropped)="drop($event)">
+
+    <app-progress-spinner *ngIf="isTasksLoading; else tasksList"></app-progress-spinner>
+
+    <p class="empty-data" *ngIf="!activeFolder && statusCard.status === 'todo'">Select one of the folders or create a new one if there are none</p>
+
+    <ng-template #tasksList>
+      <ul class="tasks-list">
+        <app-task *ngFor="let task of tasks; trackBy: trackByTasks" [task]="task"
+                  (deleteTaskEvent)="filterTasks($event)" cdkDrag [cdkDragData]="task">
+        </app-task>
+      </ul>
+    </ng-template>
+
+  </mat-card-content>
+  <hr>
+  <mat-card-actions class="card-actions" align="end" *ngIf="statusCard.status === 'todo'">
+    <button mat-raised-button color="accent" [disabled]="!activeFolder"
+            (click)="openTaskModal()">Create task</button>
+  </mat-card-actions>
+</mat-card>
